@@ -11,6 +11,9 @@ const audiowide = Audiowide({
 export const metadata = {
   title: "QR Code Generator",
   description: "Generate QR codes easily",
+  icons: {
+    icon: "/logo.png", 
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -12,7 +12,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black p-4">
-      <h1 className="text-2xl md:text-4xl font-bold font-audiowide">QR Code Generator</h1>
+      <div className="flex flex-col items-center">
+        <img src="/logo.png" alt="QR Generator Logo" width={150} height={150} />
+        <h1 className="text-4xl font-audiowide">QR Code Generator</h1>
+      </div>
 
       <input
         type="text"

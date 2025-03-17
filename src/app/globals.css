@@ -1,6 +1,15 @@
 @import "tailwindcss";
 
 :root {
+  --font-audiowide: "Audiowide", cursive;
+}
+
+.font-audiowide {
+  font-family: var(--font-audiowide);
+}
+
+
+:root {
   --background: #ffffff;
   --foreground: #171717;
 }
