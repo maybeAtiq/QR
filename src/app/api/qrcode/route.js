@@ -14,8 +14,8 @@ export async function GET(req) {
     const qr = new QRCode({
       content: url,
       padding: 2,
-      width: 512,
-      height: 512,
+      width: 1080,
+      height: 1080,
       color: "#000000",
       background: "#ffffff",
       ecl: "M",
