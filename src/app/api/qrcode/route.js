@@ -22,8 +22,7 @@ export async function GET(req) {
       join: true,
     });
     const svg = qr.svg();
-    console.log(svg);
-    // Convert SVG to PNG using sharp
+    // Converting the SVG to PNG using sharp
     const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
     return new Response(pngBuffer, {
@@ -33,8 +32,7 @@ export async function GET(req) {
       },
     });
   } catch (error) {
-    // Log the error for debugging
-    console.error("QR API error:", error);
+
     return NextResponse.json({ error: "Failed to generate QR code" }, { status: 500 });
   }
 }
