@@ -19,7 +19,7 @@ export default function Home() {
 
       <input
         type="text"
-        placeholder="Enter URL"
+        placeholder="Enter text or URL"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
         className="mt-6 p-3 text-black w-full max-w-md text-center rounded-lg bg-white border border-black"

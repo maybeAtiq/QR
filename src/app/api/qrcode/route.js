@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import qr from "qr-image";
+import QRCode from "qrcode-svg";
+import sharp from "sharp";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
@@ -10,13 +11,30 @@ export async function GET(req) {
   }
 
   try {
-    const qr_svg = qr.imageSync(url, { type: "png" });
-    return new Response(qr_svg, {
+    const qr = new QRCode({
+      content: url,
+      padding: 2,
+      width: 512,
+      height: 512,
+      color: "#000000",
+      background: "#ffffff",
+      ecl: "M",
+      join: true,
+    });
+    const svg = qr.svg();
+    console.log(svg);
+    // Convert SVG to PNG using sharp
+    const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
+
+    return new Response(pngBuffer, {
       headers: {
         "Content-Type": "image/png",
+        "Cache-Control": "no-store",
       },
     });
   } catch (error) {
+    // Log the error for debugging
+    console.error("QR API error:", error);
     return NextResponse.json({ error: "Failed to generate QR code" }, { status: 500 });
   }
 }
